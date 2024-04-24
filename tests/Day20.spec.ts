@@ -61,7 +61,7 @@ test('Mouse hover and narrowdown searching scope', async ({ page }) => {
 
         const hyperLink = await figureEle.locator('a');
         console.log(`Before isHyperLink visible ${await hyperLink.isVisible()}`);
-        
+
 
         //mouse hover
         await imgEle.hover();
@@ -92,13 +92,13 @@ test.only('Checking element status and handle dynamic status', async ({ page }) 
 
     //Interact with the checkbox component
 
-    const checkboxEle= await checkboxComp.locator("#checkbox input");
+    const checkboxEle = await checkboxComp.locator("#checkbox input");
     const isEnabled = await checkboxEle.isEnabled();
     let isSelected = await checkboxEle.isChecked();
 
     console.log(`is checkbox Enable ${isEnabled}`);
     console.log(`is checkbox isSelected ${isSelected}`);
-    
+
 
     if (!isSelected) {
         await checkboxEle.click();
@@ -109,27 +109,27 @@ test.only('Checking element status and handle dynamic status', async ({ page }) 
     if (!isSelectedAfter) {
         await checkboxEle.click();
     }
-0
+    0
     const removeButton = checkboxComp.locator('button')
     await removeButton.click()
-    await page.waitForSelector('#checkbox-example #checkbox input', {state: 'hidden', timeout: 5*1000});
+    await page.waitForSelector('#checkbox-example #checkbox input', { state: 'hidden', timeout: 5 * 1000 });
 
     //Interact with the input component
     const textboxEle = await inputEles.locator("input");
     let isEditable = await textboxEle.isEditable();
     console.log(`is checkbox isEditable ${isEditable}`);
 
-    
+
     if (!isEditable) {
         const enableButton = inputEles.locator('button')
         await enableButton.click()
-        await page.waitForSelector('#input-example #message', {state: 'visible', timeout: 5*1000});
+        await page.waitForSelector('#input-example #message', { state: 'visible', timeout: 5 * 1000 });
     }
     const messageEle = await inputEles.locator("#message");
     let isEditableAfter = await textboxEle.isEditable();
     let isMessageVisible = await messageEle.isVisible();
-     if (isMessageVisible && isEditableAfter == true) {
-     textboxEle.fill("Meomeo");
-     }
-        console.log(`is checkbox isEditableAfter ${isEditableAfter}`);
+    if (isMessageVisible && isEditableAfter == true) {
+        textboxEle.fill("Meomeo");
+    }
+    console.log(`is checkbox isEditableAfter ${isEditableAfter}`);
 })
